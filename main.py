@@ -53,8 +53,8 @@ if __name__ == '__main__':
                 cmd = 'rm -rf {}/*'.format(algo_p)
                 os.system(cmd)
 
+        algo_nums = dict(zip(avail_algos, [0 for _ in avail_algos]))
         for i in range(test_num):
-            algo_nums = dict(zip(avail_algos, [0 for _ in avail_algos]))
             random_algo = random.choice(avail_algos)
             w_size = random.choice(window_sizes)
 
