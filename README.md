@@ -150,7 +150,7 @@ modprobe -a tcp_bbr
 - server_port
 - bool_iperf：True使用iperf，False使用iperf3
 
-略
+具体实现可见代码，代码介绍略...
 
 ## 如何使用
 

@@ -16,7 +16,7 @@ def get_avail_algo():
 def upload_algo():
     algos = ['tcp_westwood', 'tcp_vegas', 'tcp_bic', 'tcp_htcp', 'tcp_bbr']
     for algo in algos:
-        os.system('modprobe -a {}'.format(algo))
+        os.system('sudo modprobe -a {}'.format(algo))
 
 
 class TransTool:
@@ -35,17 +35,16 @@ class TransTool:
 
     def tcp_iperf(self, dir_path, f_name, win_size, algo, duration, suffix='.txt'):
         file = os.path.join(dir_path, f_name + suffix)
-        cmd = 'iperf -c {} -p {} -w {} -f {} -i 1 -Z {} -t {} >> {}'.format(self.server_ip,
-                                                                            self.server_port, win_size,
-                                                                            self.format,
-                                                                            algo, duration, file)
+        cmd = 'sudo iperf -c {} -p {} -w {} -f {} -i 1 -Z {} -t {} >> {}'.format(self.server_ip,
+                                                                                 self.server_port, win_size,
+                                                                                 self.format,
+                                                                                 algo, duration, file)
         os.system(cmd)
 
     def tcp_iperf3(self, dir_path, f_name, win_size, algo, duration, suffix='.txt'):
         file = os.path.join(dir_path, f_name + suffix)
-        cmd = 'iperf3 -c {} -p {} -w {} -f {} -i 1 -C {} -t {} --logfile {}'.format(self.server_ip,
-                                                                                    self.server_port, win_size,
-                                                                                    self.format,
-                                                                                    algo, duration, file)
+        cmd = 'sudo iperf3 -c {} -p {} -w {} -f {} -i 1 -C {} -t {} --logfile {}'.format(self.server_ip,
+                                                                                         self.server_port, win_size,
+                                                                                         self.format,
+                                                                                         algo, duration, file)
         os.system(cmd)
-

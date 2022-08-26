@@ -1,6 +1,8 @@
 import argparse
-
+import os
 from trans_tool import *
+
+home = os.environ['HOME']
 
 
 def parse_opt():
@@ -9,7 +11,8 @@ def parse_opt():
                                                                               'connection with')
     parser.add_argument('--server_port', type=str, default='5001', help='The server port that you would set a '
                                                                         'connection with')
-    parser.add_argument('--dir_path', type=str, default='algos', help='The root directory to store all data.')
+    parser.add_argument('--dir_path', type=str, default='{}/Documents/algos'.format(home), help='The root directory '
+                                                                                                'to store all data.')
     parser.add_argument('--duration', type=int, default=300, help='The duration of data transition.')
     parser.add_argument('--bool_iperf', type=bool, default=True, help='True: iperf, False: iperf3.')
     parser.add_argument('--test_num', type=int, default=500)
@@ -31,7 +34,7 @@ if __name__ == '__main__':
     avail_algos = get_avail_algo()
     if len(avail_algos) > 5:
         print('Available algos are as follows:')
-        print(','.join(avail_algos))
+        print(', '.join(avail_algos))
 
         tool = TransTool(aliyun, aliyun_port, is_iperf)
 
@@ -69,4 +72,3 @@ if __name__ == '__main__':
 
     else:
         print('Please check the available algos.')
-
