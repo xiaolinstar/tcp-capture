@@ -1,33 +1,9 @@
-import argparse
-import sys
-
 from trans_tool import *
-
-home = os.environ['HOME']
-
-
-def parse_opt():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('--server_ip', type=str, default='47.94.104.34', help='The server ip that you would set a '
-                                                                              'connection with')
-    parser.add_argument('--server_port', type=str, default='5001', help='The server port that you would set a '
-                                                                        'connection with')
-    parser.add_argument('--dir_path', type=str, default='{}/Documents/algos'.format(home), help='The root directory '
-                                                                                                'to store all data.')
-    parser.add_argument('--duration', type=int, default=300, help='The duration of data transition.')
-    parser.add_argument('--bool_iperf', default=True, help='True: iperf, False: iperf3.')
-    parser.add_argument('--test_num', type=int, default=500)
-    opt = parser.parse_args()
-    return opt
+from option import args
 
 
 if __name__ == '__main__':
-    args = parse_opt()
-    for arg in vars(args):
-        if vars(args)[arg] == 'True':
-            vars(args)[arg] = True
-        elif vars(args)[arg] == 'False':
-            vars(args)[arg] = False
+
     aliyun = args.server_ip
     aliyun_port = args.server_port
     dir_p = args.dir_path
